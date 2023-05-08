@@ -14,11 +14,12 @@
 				body: JSON.stringify(task),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
+					Accept: 'application/json',
 				},
 			};
 			fetch('https://jsonplaceholder.typicode.com/todos', options)
 				.then((respuesta) => {
-					if (respuesta.status !== 200) {
+					if (respuesta.status !== 201) {
 						$container.innerHTML =
 							'La petición falló con código ' +
 							respuesta.status +
@@ -38,7 +39,7 @@
 		function ejecutarPetición(url) {
 			const $container = document.querySelector('.resultado');
 			$container.innerHTML = '<h2> Loading... </h2>';
-			fetch(url)
+			fetch(url, { headers: { Accept: 'application/json' } })
 				.then(function (respuesta) {
 					if (respuesta.status !== 200) {
 						$container.innerHTML =
