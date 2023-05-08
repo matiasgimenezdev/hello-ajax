@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+	<meta charset="UTF-8" />
+	<title>Ejemplo de petición con XMLHttpRequest</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<script>
+		function ejecutarPetición(url) {
+			var peticion = new XMLHttpRequest();
+
+			peticion.open('GET', url, true);
+			const $container = document.querySelector('.resultado');
+			$container.innerHTML = '<h2> Loading... </h2>';
+
+			peticion.onreadystatechange = function (evento) {
+				if (peticion.readyState == 4) {
+					$container.innerHTML = '';
+					if (peticion.status == 200) {
+						const $fragment = document.createDocumentFragment();
+						const data = JSON.parse(peticion.responseText);
+						data.map(({ userId, id, title, completed }) => {
+							$article = document.createElement('article');
+							$article.innerHTML = `
+		                                  <h2> Task: ${title}  </h2>
+		                                  <h3> ID:${id}</h3>
+		                                  <p> Completed: ${
+												completed ? 'TRUE' : 'FALSE'
+											}</p>
+		                              `;
+							$fragment.appendChild($article);
+						});
+
+						$container.appendChild($fragment);
+					} else {
+						$container.innerHTML = `
+		                      <p>
+		                          La petición falló con código ${peticion.status}. El cuerpo de la respuesta es: ${peticion.responseText}
+		                      </p>`;
+					}
+				}
+			};
+
+			peticion.send(null);
+		}
+	</script>
+	<body>
+		<h1>Ejemplo de petición con XMLHttpRequest</h1>
+		<p>
+			Las peticiones las haremos contra la API
+			<a href="https://jsonplaceholder.typicode.com/">JSON Placeholder</a
+			>. Esta es una API con datos de prueba que consumiremos. En
+			particular, para este ejemplo emplearemos la URL
+			<a href="https://jsonplaceholder.typicode.com/todos"
+				>https://jsonplaceholder.typicode.com/todos</a
+			>
+			la cual contiene un listado de tareas por realizar.
+		</p>
+		<p>
+			Por favor, abre las herramientas de desarrollador de tu navegador en
+			el panel de red para inspeccionar las peticiones.
+		</p>
+		<button
+			onclick="ejecutarPetición('https://jsonplaceholder.typicode.com/todos')"
+		>
+			Enviar petición
+		</button>
+		<button
+			onclick="ejecutarPetición('https://jsonplaceholder.typicode.com/xxxx')"
+		>
+			Enviar petición que falla
+		</button>
+		<section class="resultado">
+			El resultado de la petición aparecerá aquí. Observa que en ningún
+			momento la página se refreca.
+		</section>
+	</body>
+</html>
