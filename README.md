@@ -205,7 +205,7 @@ Puedes ver un ejemplo de una petición realizada con esta API [aquí](./ejemplo-
 2. Agrega un mensaje que le indique al usuario que una petición está en curso.
 3. Agrega un formulario que le permita al usuario dar de alta una tarea (ten en cuenta que la API te responderá como que la ha creado pero en realidad no se persistirá).
 
-4. Seguramente, haz notado que la API siempre retorna JSON. ¿Qué cambios deberíamos hacer en nuestro código en el hipotético caso que esta API pudiera manejar diversos tipos de contenido para asegurarnos de obtener contenido codificado en JSON?
+4. Seguramente, haz notado que la API siempre retorna JSON. ¿Qué cambios deberíamos hacer en nuestro código en el hipotético caso que esta API pudiera manejar diversos tipos de contenido para asegurarnos de obtener contenido codificado en JSON? <br>
    Para asegurarnos de obtener el contenido codificado en JSON, deberiamos especificar en la petición HTTP que se desea obtener la respuesta en formato JSON. Esto se puede hacer a través del encabezado HTTP Accept. El encabezado Accept se establece en application/json para indicar a la API que se desea obtener una respuesta codificada en JSON.
    Luego, deberiamos validar la respuesta recibida de la API para asegurarnos de que se trata de contenido codificado en JSON. Se puede verificar si la respuesta es válida y está codificada en JSON utilizando una biblioteca de análisis JSON o un método similar. Si la respuesta no es válida o no está codificada en JSON, se debe manejar el error apropiadamente, por ejemplo, informando al usuario que la respuesta no está disponible en formato JSON.
 
