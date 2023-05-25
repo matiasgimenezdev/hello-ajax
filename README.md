@@ -6,6 +6,8 @@ Este repositorio tiene por propósito de ser una introducción teórica y práct
 
 AJAX es el acrónimo de "Asynchronous JavaScript And XML" y hace referencia a un conjunto de tecnologías y técnicas que permiten principalmente mejorar o enriquecer la experiencia de un usuario en una aplicación web. Recordemos que la web en sus inicios surgió como un mecanismo de intercambio de información que fue evolucionando progresivamente hasta lo que conocemos hoy en día, donde muchas aplicaciones web tienen iguales características o funcionalidades que sus equivalentes aplicaciones de escritorio. O incluso, muchas de las aplicaciones que usamos hoy en día en el escritorio son en realidad aplicaciones web. AJAX contribuyó bastante en este sentido. Sin embargo, en el camino, existieron otras tecnologías como Flash o Silverlight, hoy en desuso, que aportaron en el mismo sentido.
 
+![Comparacion AJAX vs NO AJAX](./images/AJAX.jpg)
+
 Una posible definición para Ajax es que es “el método o conjunto de técnicas que permiten intercambiar información con un servidor y actualizar parte de los contenidos de una web sin necesidad de recargar la página web completamente”, es decir, con la información recibida del servidor y usando JavaScript se modifica la página. Sin el uso de AJAX, podemos decir que la comunicación del cliente con el servidor web es **sincrónica**. Esto implica que el usuario al realizar una acción determinada que implica una petición al servidor web, debe esperar que la misma se complete, para poder seguir interactuando con la aplicación. El siguiente diagrama ilustra dicha situación
 
 ![Ejemplo de interacción con peticiones sincrónicas](./images/sync.png)
